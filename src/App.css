@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", serif;
+  font-weight: 400;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  height: 1706px;
+  width: 100vw;
+  background: linear-gradient(to top, #0347A0, #011a3a);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* COMPONENTS styles */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav {
   display: flex;
-  flex-direction: column;
+}
+
+.nav .logo {
+  background: -webkit-linear-gradient(180deg, #011A3A 62%, #0347A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 50%;
+  padding: 15px;
+  font-size: 28px;
+}
+
+.nav .actionBtns {
+  width: 50%;
+  padding: 15px;
+  font-size: 15px;
+  display: flex;
   align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav .actionBtns .login {
+  background: -webkit-linear-gradient(180deg, #011A3A 00%, #0347A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.nav .actionBtns .signup {
+  background: -webkit-linear-gradient(180deg, #011A3A 00%, #0347A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.dividerContanior {
+  width: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.divider {
+  /* width: 91px; */
+  height: 3px;
+  background: linear-gradient(to right, #0347A0, #011a3a);
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+/* Pages Styles */
+
+/* Home page */
+
+/* Intro section */
+
+.introSection {
+  padding: 30px 25px;
+}
+
+.introSection .introductionSection .big1 {
+  background: -webkit-linear-gradient(180deg, #011A3A 60%, #0347A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 35px;
+}
+
+.introSection .introductionSection .big2 {
+  background: -webkit-linear-gradient(180deg, #011A3A 35%, #0347A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 28px;
+  margin-top: 8px;
+}
+
+.introSection .introductionSection .big3 {
+  background: -webkit-linear-gradient(180deg, #011A3A 6%, #0347A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+.introSection .actionSection .playNow {
+  background: -webkit-linear-gradient(180deg, #011A3A 6%, #0347A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 24px;
+  margin: 40px 0 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.introSection .actionSection .playNow #playIcon {
+  color: #0347a036;
+}
+
+/* Features and Rules section */
+
+.featuresAndRules {
+  margin: 25px;
+}
+
+.featuresAndRules .featuresSection .topic,
+.featuresAndRules .rulesSection .topic {
+  background: -webkit-linear-gradient(180deg, #011A3A 6%, #0347A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 24px;
+  margin: 40px 0 0px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.featuresAndRules .featuresSection .feature,
+.featuresAndRules .rulesSection .rule {
+  color: #0347A0;
+  margin-left: 25px;
+  font-size: 13px;
+  display: flex;
+  gap: 5px;
+  margin-top: 25px;
 }
