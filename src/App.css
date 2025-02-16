@@ -7,9 +7,8 @@
 }
 
 body {
-  height: 1706px;
   width: 100vw;
-  background: linear-gradient(to top, #0347A0, #011a3a);
+  background: linear-gradient(to top, #0347a0, #011a3a);
 }
 
 /* COMPONENTS styles */
@@ -120,11 +119,15 @@ body {
   margin: 25px;
 }
 
+.securedPayment {
+  margin: 25px;
+}
+
 .featuresAndRules .featuresSection .topic,
-.featuresAndRules .rulesSection .topic {
-  background: -webkit-linear-gradient(180deg, #011A3A 6%, #0347A0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.featuresAndRules .rulesSection .topic,
+.securedPayment .topic,
+.getinTouch .topic {
+  color: #0958c0bb;
   font-size: 24px;
   margin: 40px 0 0px 0;
   display: flex;
@@ -132,12 +135,73 @@ body {
   justify-content: space-between;
 }
 
+.securedPayment .topic {
+  background: -webkit-linear-gradient(180deg, #011A3A 0%, #0347A0 55%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .featuresAndRules .featuresSection .feature,
-.featuresAndRules .rulesSection .rule {
+.featuresAndRules .rulesSection .rule,
+.securedPayment .secure {
   color: #0347A0;
   margin-left: 25px;
   font-size: 13px;
   display: flex;
   gap: 5px;
   margin-top: 25px;
+}
+
+.securedPayment .secure {
+  font-size: 18px;
+  gap: 15px;
+}
+
+.securedPayment .methordes,
+.getinTouch .ways {
+  display: flex;
+  align-items: center;
+  color: #0347A0;
+  font-size: 35px;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.whyThisGameWrapper {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whyThisGame {
+  width: 291px;
+  height: 372px;
+  background-color: #0347A0;
+  border-radius: 15px;
+  padding: 15px 25px;
+}
+
+.whyThisGameWrapper .whyThisGame h2 {
+  color: #055CCD;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.whyThisGameWrapper .whyThisGame p {
+  font-size: 14px;
+  color: #055CCD;
+  font-weight: 500;
+  margin-top: 14px;
+}
+
+.getinTouch {
+  margin-left: 25px;
+}
+
+.getinTouch .ways {
+  margin-top: 40px;
+  color: #0958c0;
+  margin-bottom: 20px;
 }
