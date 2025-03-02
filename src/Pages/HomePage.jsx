@@ -38,7 +38,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Nav />
+      <Nav show={true} />
 
       <main>
         {/* Intro section */}
