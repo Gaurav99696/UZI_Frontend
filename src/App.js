@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import VarificatonOTP from "./Pages/VarificatonOTP";
+import Profile from "./Pages/Profile";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/varify" element={<VarificatonOTP />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   );

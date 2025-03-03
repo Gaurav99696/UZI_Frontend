@@ -291,3 +291,124 @@ body {
   color: #135ec1;
   margin-top: 35px;
 }
+
+.userDetails {
+  padding: 15px;
+}
+
+.userDetails .mainDetails {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userDetails .mainDetails .image {
+  width: 65px;
+  height: 65px;
+  border-radius: 50px;
+  background-color: #022B60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.userDetails .mainDetails .image #user {
+  font-size: 35px;
+  color: #0851b0;
+}
+
+.userDetails .details {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.userDetails .details .username,
+.userDetails .details .upiId,
+.userDetails .normDetails .email,
+.userDetails .normDetails .phoneNo {
+  background: -webkit-linear-gradient(180deg, #011A3A 0%, #0347A0 12%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 18px;
+}
+
+.userDetails .normDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.userDetails .normDetails .email,
+.userDetails .normDetails .phoneNo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.userDetails .normDetails .phoneNo {
+  gap: 25px;
+}
+
+.userDetails .normDetails .email #emailIcon {
+  font-size: 25px;
+  color: #0a6df0;
+}
+
+.userDetails .normDetails .phoneNo #phoneIcon {
+  font-size: 18px;
+  color: #0a6df0;
+}
+
+.gameProgress {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.gameProgress .card {
+  width: 324px;
+  height: 320px;
+  background: linear-gradient(to bottom, rgba(1, 26, 58, 0.5), rgba(3, 61, 136, 0.5));
+  border-radius: 15px;
+  padding: 20px 20px;
+}
+
+.gameProgress .card .progressBoard {
+  background: -webkit-linear-gradient(180deg, #011A3A 0%, #0347A0 30%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-size: 24px;
+}
+
+.gameProgress .card .progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.gameProgress .card .progress .box {
+  height: 65px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.blue {
+  background: -webkit-linear-gradient(180deg, #011A3A 0%, #0660d4 12%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

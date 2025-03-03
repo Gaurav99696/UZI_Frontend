@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Nav = ({ show }) => {
+const Nav = ({ show, home }) => {
   const navigate = useNavigate();
   return (
     <div className="nav">
@@ -14,6 +14,17 @@ const Nav = ({ show }) => {
             </div>
             <div className="signup" onClick={() => navigate("/signup")}>
               Sign Up
+            </div>
+          </>
+        ) : null}
+
+        {home ? (
+          <>
+            <div className="login" onClick={() => navigate("/login")}>
+              History
+            </div>
+            <div className="signup" onClick={() => navigate("/signup")}>
+              Profile
             </div>
           </>
         ) : null}
