@@ -5,7 +5,9 @@ const Nav = ({ show, home }) => {
   const navigate = useNavigate();
   return (
     <div className="nav">
-      <div className="logo">UZI.</div>
+      <div className="logo" onClick={() => navigate("/play")}>
+        UZI.
+      </div>
       <div className="actionBtns">
         {show ? (
           <>
@@ -20,10 +22,10 @@ const Nav = ({ show, home }) => {
 
         {home ? (
           <>
-            <div className="login" onClick={() => navigate("/login")}>
+            <div className="login" onClick={() => navigate("/history")}>
               History
             </div>
-            <div className="signup" onClick={() => navigate("/signup")}>
+            <div className="signup" onClick={() => navigate("/profile")}>
               Profile
             </div>
           </>

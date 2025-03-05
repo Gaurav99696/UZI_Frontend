@@ -15,7 +15,7 @@ const Login = () => {
             <input type="email" placeholder="Email..." />
             <input type="password" placeholder="Password..." />
             <p onClick={() => navigate("/varify")}>Forget Password?</p>
-            <button onClick={() => navigate("/profile")}>LOG IN</button>
+            <button onClick={() => navigate("/play")}>LOG IN</button>
             <br />
             <br />
             <p onClick={() => navigate("/signup")}>Don’t have an account ?</p>

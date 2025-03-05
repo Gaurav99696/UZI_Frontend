@@ -6,6 +6,8 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import VarificatonOTP from "./Pages/VarificatonOTP";
 import Profile from "./Pages/Profile";
+import Play from "./Pages/Play";
+import BettingPage from "./Pages/BettingPage";
 function App() {
   return (
     <>
@@ -16,6 +18,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/varify" element={<VarificatonOTP />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/play" element={<Play />} />
+        <Route path="/bet" element={<BettingPage />} />
       </Routes>
     </>
   );
