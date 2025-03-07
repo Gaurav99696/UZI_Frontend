@@ -447,14 +447,14 @@ body {
   justify-content: center;
 }
 
-.betting {
+.contanior {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.betting .card {
+.card {
   width: 324px;
   height: 282px;
   background: linear-gradient(to bottom, rgba(1, 26, 58, 0.5), rgba(3, 71, 160, 0.5));
@@ -513,4 +513,210 @@ body {
   justify-content: center;
   margin-top: 15px;
   font-size: 15px;
+}
+
+.game .text {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.game .guess {
+  width: 132px;
+  height: 30px;
+  border-radius: 15px;
+  background: linear-gradient(to right, #0347A0, #011A3A);
+  border: none;
+  padding-left: 10px;
+  color: #135ec1;
+  outline: none;
+  margin-top: 20px;
+}
+
+.game .guess::placeholder {
+  color: #135ec1;
+  font-size: 10px;
+}
+
+.game .roundBet {
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.button {
+  border-radius: 15px;
+  background: linear-gradient(to right, #0347A0, #011A3A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 228px;
+  height: 37px;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+.direction_col {
+  flex-direction: column;
+}
+
+.centerAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.centerAll .main {
+  font-size: 24px;
+  background: -webkit-linear-gradient(180deg, #011A3A 0%, #0347A0 30%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+
+.centerAll .text {
+  font-size: 12px;
+}
+
+.result {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.matchResult {
+  width: 324px;
+  height: 307px;
+  background: linear-gradient(to bottom, rgba(1, 26, 58, 0.5), rgba(3, 71, 160, 0.5));
+  border-radius: 15px;
+  padding: 20px 20px;
+  font-size: 24px;
+  color: #135ec1;
+}
+
+.conclusion {
+  width: 324px;
+  height: 128px;
+  background: linear-gradient(to bottom, rgba(1, 26, 58, 0.5), rgba(3, 71, 160, 0.5));
+  border-radius: 15px;
+  padding: 20px 20px;
+  font-size: 24px;
+  color: #135ec1;
+}
+
+.result .matchResult .text {
+  background: -webkit-linear-gradient(180deg, #011A3A 0%, #0347A0 30%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.result .matchResult .resultComliment {
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+.result .matchResult .resultsOverview {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.result .matchResult .resultsOverview .results {
+  margin-top: 12px;
+}
+
+.result .matchResult .resultsOverview .rounds {
+  margin-top: 12px;
+}
+
+.line {
+  width: 250px;
+  background-color: #02214B;
+  height: 1px;
+  margin-top: 25px;
+}
+
+.result .matchResult .total .calculatedTotal {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.result .conclusion {
+  text-align: center !important;
+}
+
+.eighteen {
+  font-size: 18px;
+}
+
+.result .conclusion button {
+  width: 107px;
+  height: 37px;
+  border-radius: 15px;
+  border: none;
+  margin-top: 8px;
+  background: linear-gradient(to right, #0347A0 0%, #011A3A 100%);
+  color: #0347A0;
+}
+
+.paymentSucess .text {
+  background: -webkit-linear-gradient(180deg, #011A3A 0%, #0347A0 30%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 40px;
+}
+
+.paymentSucess .button {
+  width: 228px;
+  height: 37px;
+  border: none;
+  color: #0347A0;
+}
+
+.paymentSucess .card .center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  height: 100%;
+}
+
+.selected {
+  background-color: #1261C8 !important;
+}
+
+.history .main {
+  padding: 20px;
+}
+
+.history .main .heading {
+  background: -webkit-linear-gradient(180deg, #011A3A 0%, #0347A0 30%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 24px;
+}
+
+.tranctions {
+  max-height: 80vh;
+  overflow: scroll;
+}
+
+.duo {
+  display: flex;
+  align-items: center;
+}
+
+.tranction {
+  justify-content: space-between;
+  font-size: 18px;
+  color: #2a60a7;
+  margin-top: 20px;
+}
+
+.tranctions .line {
+  margin-top: 10px;
+  width: 100%;
 }
