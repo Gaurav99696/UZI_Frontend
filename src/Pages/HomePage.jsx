@@ -50,7 +50,7 @@ const HomePage = () => {
             <div className="big3">Earn by just Trying your Luck.</div>
           </section>
           <section className="actionSection">
-            <div className="playNow" onClick={() => navigate("/comingSoon")}>
+            <div className="playNow" onClick={() => navigate("/login")}>
               PLAY NOW <HiMiniArrowLongRight id="playIcon" />
             </div>
           </section>

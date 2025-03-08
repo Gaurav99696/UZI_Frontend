@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Nav from "../components/Nav";
 import { FaUser } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
+import GameContext from "../Context/GameContext";
 
 const Profile = () => {
+  const betting = useContext(GameContext);
+
   let [userData, setUserData] = useState({
-    userName: "Gaurav MIshra",
+    userName: "Gaurav Mishra",
     upiId: "7380973585@ibl",
     email: "gauravmishra99696@gmail.com",
     phoneNumber: "7380973585",
     gameProgress: {
-      roundsPlayed: 15,
-      matchesPlayed: 3,
-      roundsWon: 10,
-      roundsLost: 5,
-      winAmount: 50,
-      lostAmount: 25,
+      roundsPlayed: betting.roundsPlayed,
+      matchesPlayed: betting.matchsPlayed,
+      roundsWon: betting.roundsWin,
+      roundsLost: betting.roundsLose,
+      winAmount: betting.winAmount,
+      lostAmount: betting.lostAmount,
     },
   });
   return (
@@ -60,15 +63,11 @@ const Profile = () => {
               </div>
               <div className="roundsWins box">
                 <div className="blue">Rounds Wins</div>
-                <div style={{ color: "green" }}>
-                  &#8377;{userData.gameProgress.roundsWon}+
-                </div>
+                <div>{userData.gameProgress.roundsWon}</div>
               </div>
               <div className="roundsLouse box">
                 <div className="blue">Rounds Lost</div>
-                <div style={{ color: "red" }}>
-                  &#8377;{userData.gameProgress.roundsLost}-
-                </div>
+                <div>{userData.gameProgress.roundsLost}</div>
               </div>
               <div className="winAmount box">
                 <div className="blue">Win Amount</div>

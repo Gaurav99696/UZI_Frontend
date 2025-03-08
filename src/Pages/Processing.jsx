@@ -1,10 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import GameContext from "../Context/GameContext";
 
 const Processing = () => {
+  const betting = useContext(GameContext);
   const navigate = useNavigate();
   useEffect(() => {
+    // betting.setResults([]);
     setTimeout(() => {
       navigate("/paymentSucess");
     }, 3000);

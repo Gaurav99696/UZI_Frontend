@@ -14,25 +14,29 @@ import Result from "./Pages/Result";
 import Processing from "./Pages/Processing";
 import PaymentSucess from "./Pages/PaymentSucess";
 import History from "./Pages/History";
+import { GameState } from "./Context/GameStates";
+
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/comingSoon" element={<ComingSoon />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/varify" element={<VarificatonOTP />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/play" element={<Play />} />
-        <Route path="/bet" element={<BettingPage />} />
-        <Route path="/game" element={<Game />} />
-        <Route path="/matchover" element={<Over />} />
-        <Route path="/result" element={<Result />} />
-        <Route path="/process" element={<Processing />} />
-        <Route path="/paymentSucess" element={<PaymentSucess />} />
-      </Routes>
+      <GameState>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/comingSoon" element={<ComingSoon />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/varify" element={<VarificatonOTP />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/play" element={<Play />} />
+          <Route path="/bet" element={<BettingPage />} />
+          <Route path="/game" element={<Game />} />
+          <Route path="/matchover" element={<Over />} />
+          <Route path="/result" element={<Result />} />
+          <Route path="/process" element={<Processing />} />
+          <Route path="/paymentSucess" element={<PaymentSucess />} />
+        </Routes>
+      </GameState>
     </>
   );
 }

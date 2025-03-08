@@ -520,6 +520,15 @@ body {
   margin-top: 6px;
 }
 
+.game .card {
+  height: 300px;
+}
+
+.game .card .hint {
+  text-align: center;
+  margin-top: 10px;
+}
+
 .game .guess {
   width: 132px;
   height: 30px;
