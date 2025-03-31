@@ -16,7 +16,7 @@ const EmailVarification = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5001/api/users/emailVerification",
+        "https://uzi-server.onrender.com/api/users/emailVerification",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

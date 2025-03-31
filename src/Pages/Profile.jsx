@@ -31,7 +31,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5001/api/users/getProfile/${userName}`
+          `https://uzi-server.onrender.com/api/users/getProfile/${userName}`
         );
         const data = await response.json();
 

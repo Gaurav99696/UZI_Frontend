@@ -33,7 +33,7 @@ const Result = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5001/api/game/updateGameProgress/GM",
+        "https://uzi-server.onrender.com/api/game/updateGameProgress/GM",
         {
           method: "PATCH",
           headers: {

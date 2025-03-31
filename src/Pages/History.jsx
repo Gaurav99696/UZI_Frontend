@@ -19,7 +19,7 @@ const History = () => {
     const fetchHistory = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5001/api/users/getTranx/${betting.userName}`
+          `https://uzi-server.onrender.com/api/users/getTranx/${betting.userName}`
         );
         const data = await response.json();
 

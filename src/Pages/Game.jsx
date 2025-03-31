@@ -20,7 +20,7 @@ const Game = () => {
   const fetchRandomNumber = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5001/api/game/randomNumber"
+        "https://uzi-server.onrender.com/api/game/randomNumber"
       );
       const data = await response.json();
       if (data.success) {

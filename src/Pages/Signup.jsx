@@ -31,18 +31,21 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5001/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userName,
-          password,
-          email,
-          upiId,
-        }),
-      });
+      const response = await fetch(
+        "https://uzi-server.onrender.com/api/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userName,
+            password,
+            email,
+            upiId,
+          }),
+        }
+      );
 
       const data = await response.json();
 

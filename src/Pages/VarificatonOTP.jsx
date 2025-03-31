@@ -25,7 +25,7 @@ const VerificationOTP = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5001/api/users/verifyUser",
+        "https://uzi-server.onrender.com/api/users/verifyUser",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

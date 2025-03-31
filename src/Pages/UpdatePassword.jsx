@@ -17,7 +17,7 @@ const UpdatePassword = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5001/api/users/forgetPassword",
+        "https://uzi-server.onrender.com/api/users/forgetPassword",
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
