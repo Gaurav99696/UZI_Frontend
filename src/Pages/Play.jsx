@@ -1,40 +1,58 @@
-import React from "react";
-import Nav from "../components/Nav";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Nav from "../components/Nav";
 
 const Play = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
   return (
     <div style={{ height: "100vh" }}>
       <Nav home={true} />
       <div className="playMainSection">
         <div className="instructions">
-          <div className="instructionHeading">Instrunctions</div>
+          <div className="instructionHeading">Instructions</div>
+          <div className="instruction" style={{ color: "#ffcc00 " }}>
+            <strong>IMPORTANT NOTICE:</strong> Due to some issues, we are
+            currently unable to process money exchanges. We sincerely apologize
+            for the inconvenience. Your winnings will be recorded, and all
+            pending amounts will be paid in the next update. If you send 50
+            emails requesting an early launch, we will release the update by
+            April 15, 2025. Till then enjoy the game !!!
+          </div>
+
           <div className="instruction">
             Create a match by clicking on the create match button.
           </div>
           <div className="instruction">
-            Than scelect the Bet amount your options are Rs5 or Rs10.
+            Then select the Bet amount, your options are Rs5 or Rs10.
           </div>
           <div className="instruction">
-            Than your 1st round will start and u will get hints according to
-            your betting amount on Rs5 you will get 2 chance to guess the number
-            and on the Rs10 you wil get 3 chances to guess the number.
+            Then your 1st round will start, and you will get hints based on your
+            bet. - Rs5 bet: 2 chances to guess the number. - Rs10 bet: 3 chances
+            to guess the number.
           </div>
           <div className="instruction">
-            After 5 rounds the match will end and the total will be calculated
-            and than it will decide who had to pay.
+            After 5 rounds, the match will end, and the total score will
+            determine who pays.
           </div>
           <div className="instruction">
-            First you will get the Rs 30 of Bonus to try this Game.
+            You start with Rs30 as a bonus to try the game.
           </div>
           <div className="instruction">
-            If u win the wining amount will be added to your account but if you
-            lose you will lose the money that i have given you.
+            If you win, the winning amount is added to your account. If you
+            lose, the bonus money is deducted.
           </div>
           <div className="instruction">
-            NOTE: If end up with the money that i have given you than you have
-            to pay from your account.
+            <strong>NOTE:</strong> If you run out of bonus money, you need to
+            pay from your own account.
           </div>
         </div>
         <div className="wrapper">

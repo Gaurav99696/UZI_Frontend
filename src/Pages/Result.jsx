@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import GameContext from "../Context/GameContext";
 
@@ -7,25 +7,60 @@ const Result = () => {
   const betting = useContext(GameContext);
   const results = betting.results;
 
-  // Calculate total amount correctly
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
   const totalAmount = results.reduce((acc, curr) => {
     return curr[0] === "win"
       ? acc + parseFloat(curr[1])
       : acc - parseFloat(curr[1]);
   }, 0);
 
-  const pay = () => {
+  const updateGameProgress = async () => {
+    const data = {
+      roundsPlayed: betting.roundsPlayed + 5,
+      matchesPlayed: betting.matchsPlayed + 1,
+      roundsWon: betting.roundsWin,
+      roundsLost: betting.roundsLose,
+      winAmount: betting.winAmount + (totalAmount >= 0 ? totalAmount : 0),
+      amountLost:
+        betting.lostAmount + (totalAmount < 0 ? Math.abs(totalAmount) : 0),
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:5001/api/game/updateGameProgress/GM",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const result = await response.json();
+      console.log("Game Progress Updated:", result);
+    } catch (error) {
+      console.error("Error updating game progress:", error);
+    }
+  };
+
+  const pay = async () => {
+    await updateGameProgress();
     betting.setResults([]);
     betting.setRoundsPlayed(betting.roundsPlayed + 5);
     betting.setMatchsPlayed(betting.matchsPlayed + 1);
 
     if (totalAmount >= 0) {
       betting.setWinAmount(betting.winAmount + totalAmount);
-      betting.setHistory([...betting.history, ["Recived", totalAmount]]);
-      console.log(betting.history);
+      // betting.setHistory([...betting.history, ["Recived", totalAmount]]);
     } else {
       betting.setLostAmount(betting.lostAmount + Math.abs(totalAmount));
-      betting.setHistory([...betting.history, ["Payed", totalAmount]]);
+      // betting.setHistory([...betting.history, ["Payed", totalAmount]]);
     }
 
     navigate("/process");

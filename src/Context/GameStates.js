@@ -1,5 +1,5 @@
 import GameContext from "./GameContext";
-import { use, useState } from "react";
+import { useState } from "react";
 
 export const GameState = (props) => {
   const [bet, setBet] = useState("5");
@@ -11,6 +11,7 @@ export const GameState = (props) => {
   const [winAmount, setWinAmount] = useState(0);
   const [lostAmount, setLostAmount] = useState(0);
   const [history, setHistory] = useState([]);
+  const [email, setEmail] = useState("");
 
   return (
     <GameContext.Provider
@@ -33,6 +34,8 @@ export const GameState = (props) => {
         setLostAmount,
         history,
         setHistory,
+        email,
+        setEmail,
       }}
     >
       {props.children}

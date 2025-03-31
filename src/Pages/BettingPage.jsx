@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import GameContext from "../Context/GameContext";
@@ -6,6 +6,14 @@ import GameContext from "../Context/GameContext";
 const BettingPage = () => {
   const navigate = useNavigate();
   const betting = useContext(GameContext);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <div
       className="betting contanior direction_col"

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import GameContext from "../Context/GameContext";
@@ -12,11 +12,32 @@ const Game = () => {
   const [userChoice, setUserChoice] = useState("");
   const [chance, setChance] = useState(1);
   const [hint, setHint] = useState("");
-
-  const computerChoice = 5;
+  const [computerChoice, setComputerChoice] = useState(null);
   const maxRounds = 5;
   const maxChances = 3;
   const bet = betting.bet;
+
+  const fetchRandomNumber = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5001/api/game/randomNumber"
+      );
+      const data = await response.json();
+      if (data.success) {
+        setComputerChoice(data.number);
+      }
+    } catch (error) {
+      console.error("Error fetching random number:", error);
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+    fetchRandomNumber();
+  }, []);
 
   const check = () => {
     const guess = parseInt(userChoice);
@@ -61,6 +82,7 @@ const Game = () => {
     setHint("");
     setChance(1);
     setRound(round + 1);
+    fetchRandomNumber(); // Fetch new number for next round
   };
 
   return (

@@ -4,6 +4,13 @@ import { useNavigate } from "react-router-dom";
 const Over = () => {
   const navigate = useNavigate();
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+  useEffect(() => {
     setTimeout(() => {
       navigate("/result");
     }, 3000);

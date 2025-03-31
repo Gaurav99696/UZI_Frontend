@@ -1,28 +1,77 @@
-import React from "react";
-import Nav from "../components/Nav";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import Nav from "../components/Nav";
+import GameContext from "../Context/GameContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  return (
-    <>
-      <div style={{ height: "100vh" }} className="loginPage">
-        <Nav />
+  const betting = useContext(GameContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-        <div className="loginPageContanior">
-          <div className="loginContanior">
-            <div className="text">LOG IN</div>
-            <input type="email" placeholder="Email..." />
-            <input type="password" placeholder="Password..." />
-            <p onClick={() => navigate("/varify")}>Forget Password?</p>
-            <button onClick={() => navigate("/play")}>LOG IN</button>
-            <br />
-            <br />
-            <p onClick={() => navigate("/signup")}>Don’t have an account ?</p>
-          </div>
+  const handleLogin = async () => {
+    setError("");
+
+    if (!email || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5001/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("token", data.isLogin.Authorization);
+        localStorage.setItem("userName", data.isLogin.data.userName);
+        navigate("/play");
+      } else {
+        setError(data.message || "Login failed. Please try again.");
+      }
+    } catch (error) {
+      setError("Server error. Please try again later.");
+    }
+  };
+
+  return (
+    <div style={{ height: "100vh" }} className="loginPage">
+      <Nav />
+      <div className="loginPageContanior">
+        <div className="loginContanior">
+          <div className="text">LOG IN</div>
+
+          <input
+            type="email"
+            placeholder="Email..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Password..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          {error && <p style={{ color: "red" }}>{error}</p>}
+
+          <p onClick={() => navigate("/emailVerification")}>Forget Password?</p>
+
+          <button onClick={handleLogin}>LOG IN</button>
+
+          <p onClick={() => navigate("/signup")}>Don’t have an account?</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
