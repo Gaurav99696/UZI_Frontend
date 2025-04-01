@@ -54,10 +54,10 @@ const Play = () => {
             <strong>NOTE:</strong> If you run out of bonus money, you need to
             pay from your own account.
           </div>
-        </div>
-        <div className="wrapper">
-          <div className="createMatch" onClick={() => navigate("/bet")}>
-            Create Match
+          <div className="wrapper">
+            <div className="createMatch" onClick={() => navigate("/bet")}>
+              Create Match
+            </div>
           </div>
         </div>
       </div>
