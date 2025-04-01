@@ -13,11 +13,13 @@ const Game = () => {
   const [chance, setChance] = useState(1);
   const [hint, setHint] = useState("");
   const [computerChoice, setComputerChoice] = useState(null);
+  const [loading, setLoading] = useState(false);
   const maxRounds = 5;
   const maxChances = 3;
   const bet = betting.bet;
 
   const fetchRandomNumber = async () => {
+    setLoading(true);
     try {
       const response = await fetch(
         "https://uzi-server.onrender.com/api/game/randomNumber"
@@ -28,6 +30,8 @@ const Game = () => {
       }
     } catch (error) {
       console.error("Error fetching random number:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -131,6 +135,11 @@ const Game = () => {
           </div>
         </div>
       </div>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-popup">Loading...</div>
+        </div>
+      )}
     </div>
   );
 };

@@ -8,12 +8,15 @@ const UpdatePassword = () => {
 
   const [pass, setPass] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handlePassUpdate = async () => {
     if (!pass) {
       setMessage("Please enter password !!");
       return;
     }
+
+    setLoading(true);
 
     try {
       const response = await fetch(
@@ -38,6 +41,8 @@ const UpdatePassword = () => {
       if (error.message.includes("verification")) {
         navigate("/varify");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,6 +61,11 @@ const UpdatePassword = () => {
           <button onClick={handlePassUpdate}>Set Password</button>
         </div>
       </div>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-popup">Loading...</div>
+        </div>
+      )}
     </div>
   );
 };

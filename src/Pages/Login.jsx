@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -21,6 +22,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     setError("");
+    setLoading(true);
 
     if (!email || !password) {
       setError("Please fill in all fields.");
@@ -50,6 +52,8 @@ const Login = () => {
       }
     } catch (error) {
       setError("Server error. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,6 +87,11 @@ const Login = () => {
           <p onClick={() => navigate("/signup")}>Don’t have an account?</p>
         </div>
       </div>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-popup">Loading...</div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GameContext from "../Context/GameContext";
 
@@ -6,6 +6,7 @@ const Result = () => {
   const navigate = useNavigate();
   const betting = useContext(GameContext);
   const results = betting.results;
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -21,6 +22,7 @@ const Result = () => {
   }, 0);
 
   const updateGameProgress = async () => {
+    setLoading(true);
     const data = {
       roundsPlayed: betting.roundsPlayed + 5,
       matchesPlayed: betting.matchsPlayed + 1,
@@ -31,9 +33,13 @@ const Result = () => {
         betting.lostAmount + (totalAmount < 0 ? Math.abs(totalAmount) : 0),
     };
 
+    console.log(data);
+
     try {
       const response = await fetch(
-        "https://uzi-server.onrender.com/api/game/updateGameProgress/GM",
+        `https://uzi-server.onrender.com/api/game/updateGameProgress/${localStorage.getItem(
+          "userName"
+        )}`,
         {
           method: "PATCH",
           headers: {
@@ -46,6 +52,8 @@ const Result = () => {
       console.log("Game Progress Updated:", result);
     } catch (error) {
       console.error("Error updating game progress:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -118,6 +126,11 @@ const Result = () => {
         </div>
         <button onClick={pay}>Pay</button>
       </div>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-popup">Loading...</div>
+        </div>
+      )}
     </div>
   );
 };

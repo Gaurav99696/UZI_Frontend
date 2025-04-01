@@ -13,6 +13,7 @@ const Profile = () => {
     upiId: "",
     email: "",
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -29,6 +30,7 @@ const Profile = () => {
     }
 
     const fetchProfile = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `https://uzi-server.onrender.com/api/users/getProfile/${userName}`
@@ -52,6 +54,8 @@ const Profile = () => {
         }
       } catch (error) {
         console.error("Error fetching profile:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -59,18 +63,25 @@ const Profile = () => {
   }, [navigate]);
 
   const deleteUser = async () => {
-    await fetch(
-      `https://uzi-server.onrender.com/api/users/deleteUser/${localStorage.getItem(
-        "userName"
-      )}`,
-      {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    setLoading(true);
+    try {
+      await fetch(
+        `https://uzi-server.onrender.com/api/users/deleteUser/${localStorage.getItem(
+          "userName"
+        )}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-    localStorage.clear();
-    navigate("/signup");
+      localStorage.clear();
+      navigate("/signup");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -136,6 +147,11 @@ const Profile = () => {
           Delete Account
         </button>
       </div>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-popup">Loading...</div>
+        </div>
+      )}
     </div>
   );
 };

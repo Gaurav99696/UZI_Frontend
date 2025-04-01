@@ -10,6 +10,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [upiId, setupiId] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -28,7 +29,7 @@ const Signup = () => {
     if (!emailRegex.test(email)) return "Invalid email format.";
     if (!passwordRegex.test(password))
       return "Password must be at least 6 characters long and include a number.";
-    if (!upiId.trim()) return "upiId ID is required.";
+    if (!upiId.trim()) return "UPI ID is required.";
     return null;
   };
 
@@ -38,6 +39,9 @@ const Signup = () => {
       setError(validationError);
       return;
     }
+
+    setLoading(true);
+    setError("");
 
     try {
       const response = await fetch(
@@ -65,15 +69,16 @@ const Signup = () => {
       navigate("/varify", { state: { email: email, from: "/signup" } });
     } catch (err) {
       setError(err.message);
-      // navigate("/varify", { state: { email: email, from: "/signup" } });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <div style={{ height: "100vh" }}>
+      <div style={{ height: "100vh", position: "relative" }}>
         <Nav />
-        <div className="signPageContanior">
+        <div className={`signPageContanior ${loading ? "disabled" : ""}`}>
           <div className="signContanior">
             <div className="text">SIGN UP</div>
             {error && <p style={{ color: "red" }}>{error}</p>}
@@ -82,31 +87,51 @@ const Signup = () => {
               placeholder="Username..."
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
+              disabled={loading}
             />
             <input
               type="email"
               placeholder="Email..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
             />
             <input
               type="password"
               placeholder="Password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={loading}
             />
             <input
               type="text"
-              placeholder="upiId..."
+              placeholder="UPI ID..."
               value={upiId}
               onChange={(e) => setupiId(e.target.value)}
+              disabled={loading}
             />
-            <button onClick={handleSignup}>SIGN UP</button>
+            <button onClick={handleSignup} disabled={loading}>
+              SIGN UP
+            </button>
             <br />
             <br />
-            <p onClick={() => navigate("/login")}>Already have an account?</p>
+            <p
+              onClick={() => navigate("/login")}
+              style={{
+                cursor: loading ? "default" : "pointer",
+                pointerEvents: loading ? "none" : "auto",
+              }}
+            >
+              Already have an account?
+            </p>
           </div>
         </div>
+
+        {loading && (
+          <div className="loading-overlay">
+            <div className="loading-popup">Loading...</div>
+          </div>
+        )}
       </div>
     </>
   );

@@ -5,6 +5,7 @@ import GameContext from "../Context/GameContext";
 const EmailVarification = () => {
   const navigate = useNavigate();
   const betting = useContext(GameContext);
+  const [loading, setLoading] = useState(false);
 
   const [message, setMessage] = useState("");
 
@@ -14,6 +15,7 @@ const EmailVarification = () => {
       return;
     }
 
+    setLoading(true);
     try {
       const response = await fetch(
         "https://uzi-server.onrender.com/api/users/emailVerification",
@@ -30,6 +32,8 @@ const EmailVarification = () => {
       });
     } catch (error) {
       setMessage("Failed to send verification email");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,6 +53,11 @@ const EmailVarification = () => {
           <button onClick={handleVerifyClick}>Verify</button>
         </div>
       </div>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-popup">Loading...</div>
+        </div>
+      )}
     </div>
   );
 };

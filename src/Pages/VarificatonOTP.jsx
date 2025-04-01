@@ -8,6 +8,7 @@ const VerificationOTP = () => {
   const [otp, setOtp] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleVerifyClick = async () => {
     console.log(location.state?.from);
@@ -16,6 +17,7 @@ const VerificationOTP = () => {
       return;
     }
 
+    setLoading(true);
     const payload = {
       OTP: otp,
       email: location.state?.email || "",
@@ -41,6 +43,8 @@ const VerificationOTP = () => {
       }
     } catch (error) {
       setMessage("Verification failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,6 +68,11 @@ const VerificationOTP = () => {
             {message && <p>{message}</p>}
           </div>
         </div>
+        {loading && (
+          <div className="loading-overlay">
+            <div className="loading-popup">Loading...</div>
+          </div>
+        )}
       </div>
     </>
   );

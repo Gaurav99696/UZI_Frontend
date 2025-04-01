@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import Divider from "../components/Divider";
 import GameContext from "../Context/GameContext";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const History = () => {
   const navigate = useNavigate();
   const betting = useContext(GameContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -17,9 +18,12 @@ const History = () => {
     }
 
     const fetchHistory = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
-          `https://uzi-server.onrender.com/api/users/getTranx/${betting.userName}`
+          `https://uzi-server.onrender.com/api/users/getTranx/${localStorage.getItem(
+            "userName"
+          )}`
         );
         const data = await response.json();
 
@@ -28,6 +32,8 @@ const History = () => {
         }
       } catch (error) {
         console.error("Error fetching transaction history:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -65,6 +71,11 @@ const History = () => {
           )}
         </div>
       </div>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-popup">Loading...</div>
+        </div>
+      )}
     </div>
   );
 };
