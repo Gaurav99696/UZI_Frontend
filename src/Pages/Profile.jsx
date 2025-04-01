@@ -60,7 +60,7 @@ const Profile = () => {
 
   const deleteUser = async () => {
     await fetch(
-      `http://localhost:5001/api/users/deleteUser/${localStorage.getItem(
+      `https://uzi-server.onrender.com/api/users/deleteUser/${localStorage.getItem(
         "userName"
       )}`,
       {
