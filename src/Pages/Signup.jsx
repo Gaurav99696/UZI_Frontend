@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +10,15 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [upiId, setupiId] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      alert("You need to log out First");
+      navigate("/play");
+    }
+  }, []);
 
   const validateInputs = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

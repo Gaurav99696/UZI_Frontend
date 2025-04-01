@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 import GameContext from "../Context/GameContext";
@@ -9,6 +9,15 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      alert("You need to log out First");
+      navigate("/play");
+    }
+  }, []);
 
   const handleLogin = async () => {
     setError("");

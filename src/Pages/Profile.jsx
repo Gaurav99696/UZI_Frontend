@@ -58,6 +58,21 @@ const Profile = () => {
     fetchProfile();
   }, [navigate]);
 
+  const deleteUser = async () => {
+    await fetch(
+      `http://localhost:5001/api/users/deleteUser/${localStorage.getItem(
+        "userName"
+      )}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    localStorage.clear();
+    navigate("/signup");
+  };
+
   return (
     <div style={{ height: "100vh" }}>
       <Nav home={true} />
@@ -107,6 +122,19 @@ const Profile = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="accActions">
+        <button
+          onClick={() => {
+            localStorage.clear();
+            navigate("/login");
+          }}
+        >
+          LOG OUT
+        </button>
+        <button style={{ color: "red" }} onClick={() => deleteUser()}>
+          Delete Account
+        </button>
       </div>
     </div>
   );
