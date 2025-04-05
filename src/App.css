@@ -281,6 +281,10 @@ body {
   margin-left: 5px;
 }
 
+.varifyContanior {
+  height: auto;
+}
+
 .loginContanior button,
 .signContanior button {
   width: 107px;
