@@ -57,6 +57,8 @@ const VerificationOTP = () => {
             <div className="text">Verification OTP</div>
             <p>
               Enter the 4-digit OTP code that you have received on your email!!
+            </p>
+            <p style={{ color: "#ffcc00 " }}>
               if not visible in the inbox try checking in spam section.
             </p>
             <input
