@@ -56,7 +56,8 @@ const VerificationOTP = () => {
           <div className="signContanior varifyContanior">
             <div className="text">Verification OTP</div>
             <p>
-              Enter the 4-digit OTP code that you have received on your email
+              Enter the 4-digit OTP code that you have received on your email!!
+              if not visible in the inbox try checking in spam section.
             </p>
             <input
               type="text"

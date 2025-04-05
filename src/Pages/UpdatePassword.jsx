@@ -53,7 +53,7 @@ const UpdatePassword = () => {
           <div className="text">Set your Password</div>
           {message && <p>{message}</p>}
           <input
-            type="password"
+            type="text"
             placeholder="Enter New password..."
             value={pass}
             onChange={(e) => setPass(e.target.value)}
